@@ -9,6 +9,9 @@ import {
   applyNumber,
   changeOperation,
   clearDisplay,
+  memoryClean,
+  memoryPlus,
+  memoryRight,
 } from "./actions";
 
 function App() {
@@ -23,7 +26,17 @@ function App() {
   const reset = () => {
     calculatorDispatch(clearDisplay());
   };
+  const memoryPlusHandler = () => {
+    calculatorDispatch(memoryPlus());
+  };
 
+  const mcHandler = () => {
+    calculatorDispatch(memoryClean());
+  };
+
+  const mRhandler = () => {
+    calculatorDispatch(memoryRight());
+  };
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
@@ -44,9 +57,9 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={"M+"} />
-              <CalcButton value={"MR"} />
-              <CalcButton value={"MC"} />
+              <CalcButton value={"M+"} onClick={memoryPlusHandler} />
+              <CalcButton value={"MR"} onClick={mRhandler} />
+              <CalcButton value={"MC"} onClick={mcHandler} />
             </div>
 
             <div className="row">
